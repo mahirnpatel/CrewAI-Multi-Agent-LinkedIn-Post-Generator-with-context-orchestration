@@ -1,0 +1,71 @@
+research_task:
+  description: >
+    Research the topic "{topic}" on {current_year} using the web search tool.
+    Perform multiple relevant search queries to gather the most recent
+    and reliable information.
+    Identify 5-7 key trends or important findings.
+    Include supporting statistics or data if available.
+    Mention sources clearly.
+
+  expected_output: >
+    A structured list formatted as:
+
+    1. Trend Title:
+       Description:
+       Supporting Data:
+       Source:
+
+    2. Trend Title:
+       Description:
+       Supporting Data:
+       Source:
+
+  agent: researcher
+
+analysis_task:
+  description: >
+    Using ONLY the research findings provided in the context about "{topic}",
+    analyze the information and extract meaningful insights.
+    Identify patterns, group related trends, and highlight important statistics.
+    Do NOT introduce new information.
+    Do NOT perform any new research.
+
+  expected_output: >
+    Structured output formatted as:
+
+    Key Themes:
+    - Theme 1:
+      Explanation:
+    - Theme 2:
+      Explanation:
+
+    Important Statistics:
+    - Statistic 1
+    - Statistic 2
+
+    Why This Matters:
+    - Insight 1
+    - Insight 2
+
+  agent: analyst
+  context:
+    - research_task
+
+writing_task:
+  description: >
+    Using ONLY the structured analysis provided in the context about "{topic}",
+    create a compelling LinkedIn post.
+    Start with a strong hook.
+    Keep it professional and insightful.
+    Do NOT introduce new facts or perform research.
+    Make sure to include hastags related to the topic
+
+  expected_output: >
+    A LinkedIn-ready post between 150–250 words.
+    Clear hook.
+    Short paragraphs.
+    Professional tone.
+
+  agent: writer
+  context:
+    - analysis_task
